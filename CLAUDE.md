@@ -22,7 +22,9 @@ At the start of a session, read `memory/<repo>.md` for the repo being worked on,
 
 ## Git workflow
 - Every change goes on a `description-of-feature` branch with one or more commits, pushed and opened as a PR (`gh pr create`) with a Conventional Commit title. The body ends with the Claude Code attribution line.
-- **Never merge PRs, and never push to `main`.** The user reviews and squash-merges, then says so. After that, switch the local repo back to `main`, pull, and delete the local branch.
+- **Never push to `main`.** After a PR merges, switch the local repo back to `main`, pull, and delete the local branch.
+- **Who merges, for now:** until the suite deploys to dev (nothing deploys on merge yet), a separate Claude session reviews each PR and squash-merges it if it approves. The user doesn't need to review first. The PR's author session never merges its own PR without that review.
+- **Who merges, once anything deploys to dev:** never merge PRs. The user reviews and squash-merges, then says so. Remove the "for now" rule above when this starts.
 - PRs are authored under the user's account, so the user can't formally approve them. Don't suggest requiring approvals in branch protection.
 
 ## Rules that span repos
